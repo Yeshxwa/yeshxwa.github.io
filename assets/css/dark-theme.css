@@ -1,8 +1,3 @@
-/* ==========================================================================
-   Dark Gray Theme Override
-   Gray primary, black & white secondary
-   ========================================================================== */
-
 :root {
 	--bg-darkest: #0a0a0a;
 	--bg-dark: #111111;
@@ -373,11 +368,6 @@ input[type="button"].alt:hover,
 	background: #3a3a3a !important;
 }
 
-
-/* ==========================================================================
-   Steam-Style Project Modal — Gray/Black/White
-   ========================================================================== */
-
 .modal-overlay {
 	position: fixed;
 	inset: 0;
@@ -386,6 +376,7 @@ input[type="button"].alt:hover,
 	backdrop-filter: blur(6px);
 	-webkit-backdrop-filter: blur(6px);
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	opacity: 0;
@@ -432,8 +423,6 @@ input[type="button"].alt:hover,
 	background: #444;
 }
 
-/* --- Close Button --- */
-
 .modal-close {
 	position: absolute;
 	top: 0;
@@ -475,15 +464,12 @@ input[type="button"].alt:hover,
 	font-weight: 400;
 }
 
-/* --- Two-Column Layout --- */
-
 .modal-top {
 	display: flex;
 	position: relative;
 	background: #000;
 }
 
-/* Left: Gallery */
 .modal-gallery {
 	flex: 1 1 0;
 	min-width: 0;
@@ -507,7 +493,6 @@ input[type="button"].alt:hover,
 	display: block;
 }
 
-/* Thumbnail strip — fills width, shows scrollbar */
 .modal-gallery-thumbs {
 	display: flex;
 	gap: 2px;
@@ -516,7 +501,6 @@ input[type="button"].alt:hover,
 	padding: 2px;
 }
 
-/* Visible scrollbar for thumbnails */
 .modal-gallery-thumbs::-webkit-scrollbar {
 	height: 10px;
 }
@@ -566,7 +550,6 @@ input[type="button"].alt:hover,
 	display: block;
 }
 
-/* Right: Sidebar — absolutely positioned to match gallery height */
 .modal-sidebar {
 	position: absolute;
 	top: 0;
@@ -723,5 +706,101 @@ input[type="button"].alt:hover,
 
 	.modal-meta-label {
 		flex: 0 0 110px;
+	}
+}
+
+.modal-steam-bar {
+	display: flex;
+	flex-direction: column;
+	background: linear-gradient(to right, #444, #111);
+	color: #fff;
+	width: 100%;
+	max-width: 960px;
+	margin-top: 16px;
+	margin-bottom: 20px;
+	border: 1px solid #333;
+	box-sizing: border-box;
+	position: relative;
+	overflow: visible;
+	padding: 12px 16px 22px 16px;
+}
+
+.steam-bar-top-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 1.1em;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.steam-os-icons span.icon {
+	font-size: 0.85em;
+	color: #bababa;
+}
+
+.steam-bar-bottom-row {
+	position: absolute;
+	bottom: -35px;
+	right: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.steam-btn-strip {
+	background: rgba(0, 0, 0, 0.5);
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.steam-play-btn {
+	background: linear-gradient(to bottom, #4acaa8, #358872);
+	color: #99e6d1 !important;
+	padding: 0.45em 1.8em;
+	border-radius: 2px;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+	font-size: 0.95em;
+	font-family: Arial, Helvetica, sans-serif;
+	transition: background 0.2s, color 0.2s;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.steam-play-btn:hover {
+	background: linear-gradient(to bottom, #4eceac, #4acaa8);
+	color: #fff !important;
+}
+
+.steam-play-btn.is-disabled {
+	background: #333333;
+	color: #666666 !important;
+	cursor: not-allowed;
+	pointer-events: none;
+	text-shadow: none;
+}
+
+@media screen and (max-width: 800px) {
+	.steam-bar-top-row {
+		padding: 12px 12px 6px 12px;
+		font-size: 1em;
+	}
+
+	.steam-bar-bottom-row {
+		justify-content: center;
+		padding: 4px 8px 8px 8px;
+	}
+
+	.steam-btn-strip {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.steam-play-btn {
+		width: 100%;
+		text-align: center;
 	}
 }

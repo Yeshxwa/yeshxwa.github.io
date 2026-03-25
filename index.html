@@ -16,7 +16,7 @@
 		<header>
 			<span class="image avatar"><img src="images/avatar.jpg" alt="" /></span>
 			<h1 id="logo"><a href="#">Joshua Daniel Castillo</a></h1>
-			<p>Gameplay Programmer<br />
+			<p>Game Developer<br />
 			</p>
 		</header>
 		<nav id="nav">
@@ -53,9 +53,9 @@
 				<div class="container">
 					<header class="major">
 						<h2>Hi, I’m Joshua—I build the "feel" of games.</h2>
-						<p>I’m an aspiring Gameplay Programmer with a passion for turning complex logic into smooth,
+						<p>I’m an aspiring Game Developer with a passion for turning complex logic into smooth,
 							interactive experiences. I spend my days bridging the gap between clean C# code and that
-							'perfect' gameplay feel—usually with a fresh cup of coffee in hand. I value stability and
+							'perfect' gameplay feel, usually with a fresh cup of coffee in hand. I value stability and
 							creative expression in my work, whether I'm architecting systems in Unity or deep-diving
 							into
 							new technologies. I’m a firm believer that the best games are built with a mix of technical
@@ -70,7 +70,7 @@
 				<div class="container">
 					<h3>Things I Can Do</h3>
 					<p>Developing games is part technical problem-solving and part creative experimentation. Here’s a
-						quick look at what I bring to the table—from architecting C# systems to the diverse interests
+						quick look at what I bring to the table, from architecting C# systems to the diverse interests
 						that influence my approach to game design.</p>
 					<ul class="feature-icons">
 						<li class="icon solid fa-code">Write codes in C#</li>
@@ -87,7 +87,7 @@
 			<section id="three">
 				<div class="container">
 					<h3>A Few Accomplishments</h3>
-					<p>These are the games I’ve helped bring to life as a Gameplay Programmer, collaborating with
+					<p>These are the games I’ve helped bring to life as a Game Developer, collaborating with
 						talented teams to turn creative visions into playable reality.</p>
 					<div class="features">
 						<article data-project="reverto">
@@ -524,6 +524,21 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<div class="modal-tags" id="modalTags"></div>
 				</div>
 			</div>
+
+		</div>
+
+		<div id="modalSteamBar" class="modal-steam-bar" style="display: none;">
+			<div class="steam-bar-top-row">
+				<span id="steamBarTitle">Download Game</span>
+				<div class="steam-os-icons">
+					<span class="icon brands fa-windows"></span>
+				</div>
+			</div>
+			<div class="steam-bar-bottom-row">
+				<div class="steam-btn-strip">
+					<a href="#" id="steamPlayBtn" class="steam-play-btn" target="_blank">Download Game</a>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -536,15 +551,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
-	<!-- Project Modal Script -->
 	<script>
 		(function () {
 			// ===== PROJECT DATA =====
-			// Edit the descriptions, tools, year, role, and collaborators below.
-			// "preview" is the sidebar image (top-right). "gallery" is for the scrollable thumbnails (left).
 			var projectData = {
 				reverto: {
 					title: 'Reverto',
+					playLink: 'https://drive.google.com/file/d/1NC_UAhDycOUSiRnvmwnvL760FqknFNlt/view?usp=sharing',
 					preview: 'images/projects/reverto/preview.jpg',
 					gallery: [
 						'images/projects/reverto/1.jpg',
@@ -561,6 +574,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				},
 				interweave: {
 					title: 'Interweave',
+					playLink: '',
 					preview: 'images/projects/interweave/preview.jpg',
 					gallery: [
 						'images/projects/interweave/1.jpg',
@@ -578,6 +592,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				},
 				projectcube: {
 					title: 'Project Cube',
+					playLink: 'https://drive.google.com/file/d/1HTphxOIlFpplg7GziAFAk02sLSmMBjL0/view?usp=sharing',
 					preview: 'images/projects/cube/preview.png',
 					gallery: [
 						'images/projects/cube/1.jpg',
@@ -666,7 +681,24 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				tagsHtml += '</div>';
 				modalTags.innerHTML = tagsHtml;
 
-				// Show
+				// Steam Bar Logic
+				var steamBar = document.getElementById('modalSteamBar');
+				var steamTitle = document.getElementById('steamBarTitle');
+				var steamBtn = document.getElementById('steamPlayBtn');
+
+				steamBar.style.display = 'flex';
+				steamTitle.textContent = 'Play ' + data.title.toUpperCase();
+
+				if (data.playLink && data.playLink !== '') {
+					steamBtn.href = data.playLink;
+					steamBtn.classList.remove('is-disabled');
+					steamBtn.target = '_blank';
+				} else {
+					steamBtn.removeAttribute('href');
+					steamBtn.classList.add('is-disabled');
+					steamBtn.removeAttribute('target');
+				}
+
 				modalEl.classList.add('is-active');
 				document.body.style.overflow = 'hidden';
 			};
